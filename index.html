@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Raspberry Pi LED Control</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 100px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .on {
+            background-color: green;
+            color: white;
+        }
+        .off {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>LED Control using Raspberry Pi</h1>
+
+    <h2>LED is {{ "ON" if state else "OFF" }}</h2>
+
+    <a href="/toggle">
+        <button class="{{ 'on' if state else 'off' }}">
+            Toggle LED
+        </button>
+    </a>
+
+</body>
+</html>
