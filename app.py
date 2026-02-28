@@ -3,22 +3,46 @@ import RPi.GPIO as GPIO
 
 app = Flask(__name__)
 
-LED_PIN = 18   # GPIO18 (Physical pin 12)
+# GPIO Pins
+LED1 = 18   # GPIO18
+LED2 = 23   # GPIO23
+LED3 = 24   # GPIO24
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(LED_PIN, GPIO.OUT)
+GPIO.setup(LED1, GPIO.OUT)
+GPIO.setup(LED2, GPIO.OUT)
+GPIO.setup(LED3, GPIO.OUT)
 
-led_state = False
+led1_state = False
+led2_state = False
+led3_state = False
 
 @app.route('/')
 def home():
-    return render_template('index.html', state=led_state)
+    return render_template('index.html',
+                           led1=led1_state,
+                           led2=led2_state,
+                           led3=led3_state)
 
-@app.route('/toggle')
-def toggle():
-    global led_state
-    led_state = not led_state
-    GPIO.output(LED_PIN, led_state)
+@app.route('/toggle1')
+def toggle1():
+    global led1_state
+    led1_state = not led1_state
+    GPIO.output(LED1, led1_state)
+    return redirect(url_for('home'))
+
+@app.route('/toggle2')
+def toggle2():
+    global led2_state
+    led2_state = not led2_state
+    GPIO.output(LED2, led2_state)
+    return redirect(url_for('home'))
+
+@app.route('/toggle3')
+def toggle3():
+    global led3_state
+    led3_state = not led3_state
+    GPIO.output(LED3, led3_state)
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
