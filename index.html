@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Raspberry Pi LED Control</title>
+    <title>Two LED Control</title>
     <style>
         body {
             text-align: center;
             font-family: Arial;
-            margin-top: 100px;
+            margin-top: 80px;
         }
+
         button {
             padding: 15px 30px;
-            font-size: 20px;
+            font-size: 18px;
+            margin: 10px;
             cursor: pointer;
         }
+
         .on {
             background-color: green;
             color: white;
         }
+
         .off {
             background-color: red;
             color: white;
@@ -25,13 +29,19 @@
 </head>
 <body>
 
-    <h1>LED Control using Raspberry Pi</h1>
+    <h1>Control Two LEDs using Raspberry Pi</h1>
 
-    <h2>LED is {{ "ON" if state else "OFF" }}</h2>
+    <h2>LED 1 is {{ "ON" if led1 else "OFF" }}</h2>
+    <a href="/toggle1">
+        <button class="{{ 'on' if led1 else 'off' }}">
+            Toggle LED 1
+        </button>
+    </a>
 
-    <a href="/toggle">
-        <button class="{{ 'on' if state else 'off' }}">
-            Toggle LED
+    <h2>LED 2 is {{ "ON" if led2 else "OFF" }}</h2>
+    <a href="/toggle2">
+        <button class="{{ 'on' if led2 else 'off' }}">
+            Toggle LED 2
         </button>
     </a>
 
