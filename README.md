@@ -1,1 +1,2 @@
-# SIC-IOT
+# SIC
+This is my IOT project description
